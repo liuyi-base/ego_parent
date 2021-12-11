@@ -14,6 +14,7 @@
         <module>ego_api</module>
         <module>ego_provider</module>
         <module>ego_manage</module>
+        <module>ego_commons</module>
     </modules>
 
     <!-- Spring Boot 的父项目，声明所有 Spring Boot 相关版本 -->
@@ -150,12 +151,12 @@
                 <artifactId>spring-boot-starter-amqp</artifactId>
                 <version>${spring-version}</version>
             </dependency>
-<!--            &lt;!&ndash; security&ndash;&gt;-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-security</artifactId>-->
-<!--                <version>${spring-version}</version>-->
-<!--            </dependency>-->
+            <!-- security-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>${spring-version}</version>
+            </dependency>
             <!-- httpclient-->
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>

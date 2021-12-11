@@ -10,6 +10,7 @@
         <module name="ego_manage" />
         <module name="ego_api" />
         <module name="ego_mapper" />
+        <module name="ego_commons" />
         <module name="ego_pojo" />
       </profile>
     </annotationProcessing>
@@ -17,6 +18,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ego_api" options="-parameters" />
+      <module name="ego_commons" options="-parameters" />
       <module name="ego_manage" options="-parameters" />
       <module name="ego_mapper" options="-parameters" />
       <module name="ego_parent" options="-parameters" />

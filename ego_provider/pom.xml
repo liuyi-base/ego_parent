@@ -11,22 +11,17 @@
 
     <artifactId>ego_provider</artifactId>
 
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
-
     <dependencies>
         <!-- 依赖于接口 -->
         <dependency>
-            <groupId>com.ego</groupId>
             <artifactId>ego_api</artifactId>
+            <groupId>com.ego</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- 访问数据库 -->
         <dependency>
-            <groupId>com.ego</groupId>
             <artifactId>ego_mapper</artifactId>
+            <groupId>com.ego</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <!-- dubbo -->
@@ -56,5 +51,4 @@
             <artifactId>pagehelper</artifactId>
         </dependency>
     </dependencies>
-
 </project>
