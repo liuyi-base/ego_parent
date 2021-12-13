@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ego_mapper" />
+        <module name="ego_search" />
         <module name="ego_pojo" />
         <module name="ego_redis" />
         <module name="ego_rabbitmq_receive" />
@@ -34,6 +35,7 @@
       <module name="ego_rabbitmq_receive" options="-parameters" />
       <module name="ego_rabbitmq_sender" options="-parameters" />
       <module name="ego_redis" options="-parameters" />
+      <module name="ego_search" options="-parameters" />
     </option>
   </component>
 </project>

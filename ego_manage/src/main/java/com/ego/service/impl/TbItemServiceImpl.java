@@ -1,5 +1,6 @@
 package com.ego.service.impl;
 
+import com.ego.sender.Send;
 import com.ego.service.TbItemService;
 import com.ego.commons.pojo.EasyUIDatagrid;
 import com.ego.commons.pojo.EgoResult;
@@ -9,6 +10,8 @@ import com.ego.pojo.TbItem;
 import com.ego.pojo.TbItemDesc;
 import com.ego.pojo.TbItemParamItem;
 import org.apache.dubbo.config.annotation.Reference;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,6 +23,10 @@ public class TbItemServiceImpl implements TbItemService {
 
     @Reference
     private TbItemDubboService tbItemDubboService;
+    @Autowired
+    private Send send;
+    @Value("${ego.rabbitmq.item.insertName}")
+    private String itemInsert;
 
     @Override
     public EasyUIDatagrid showItem(int page, int rows) {
@@ -60,6 +67,7 @@ public class TbItemServiceImpl implements TbItemService {
 
         int index = tbItemDubboService.update(item, tbItemDesc,tbItemParamItem);
         if (index == 1) {
+            send.send(itemParams,itemInsert);
             return EgoResult.ok();
         } else {
             return EgoResult.error("新增失败");
@@ -91,6 +99,7 @@ public class TbItemServiceImpl implements TbItemService {
 
         int index = tbItemDubboService.insert(item, tbItemDesc, tbItemParamItem);
         if (index == 1) {
+            send.send(itemParams,itemInsert);
             return EgoResult.ok();
         }
 

@@ -93,4 +93,9 @@ public class TbItemDubboServiceImpl implements TbItemDubboService {
         }
         return 0;
     }
+
+    @Override
+    public TbItem selectById(Long id) {
+        return tbItemMapper.selectByPrimaryKey(id);
+    }
 }

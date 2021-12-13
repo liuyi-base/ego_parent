@@ -6,3 +6,7 @@ ego:
   rabbitmq:
     content:
       queueName: queue
+    item:
+      insertName: insertitem
+  search:
+    insert: http://localhost:8083/insert

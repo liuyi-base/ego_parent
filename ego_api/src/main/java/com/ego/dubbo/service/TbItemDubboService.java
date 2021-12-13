@@ -26,4 +26,6 @@ public interface TbItemDubboService {
     int insert(TbItem tbItem, TbItemDesc tbItemDesc, TbItemParamItem tbItemParamItem) ;
 
     int update(TbItem tbItem, TbItemDesc tbItemDesc, TbItemParamItem tbItemParamItem) throws RuntimeException;
+
+    TbItem selectById(Long id);
 }
