@@ -1,4 +1,4 @@
-package com.ego.config;
+package com.ego.item.config;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;

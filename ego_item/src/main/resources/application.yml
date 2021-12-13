@@ -1,13 +1,13 @@
 dubbo:
   application:
     name: ego-item
-    registry:
-      address: zookeeper://192.168.8.128:2181
+  registry:
+    address: zookeeper://192.168.8.128:2181
 
 server:
   port: 8081
-  # Spring MVC 视图解析器
 
+# Spring MVC视图解析器
 spring:
   mvc:
     view:
