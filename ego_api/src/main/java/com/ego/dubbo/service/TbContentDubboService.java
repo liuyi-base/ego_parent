@@ -42,4 +42,6 @@ public interface TbContentDubboService {
      * @return
      */
     int deleteByIds(long[] ids) throws DaoException;
+
+    List<TbContent> selectAllByCategoryid(Long categoryId);
 }

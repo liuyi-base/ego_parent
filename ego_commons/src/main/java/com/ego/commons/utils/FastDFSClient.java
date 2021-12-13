@@ -1,19 +1,27 @@
 package com.ego.commons.utils;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import org.apache.commons.lang3.StringUtils;
 import org.csource.common.NameValuePair;
-import org.csource.fastdfs.*;
-
-import java.io.*;
+import org.csource.fastdfs.ClientGlobal;
+import org.csource.fastdfs.StorageClient;
+import org.csource.fastdfs.StorageClient1;
+import org.csource.fastdfs.StorageServer;
+import org.csource.fastdfs.TrackerClient;
+import org.csource.fastdfs.TrackerServer;
 
 /**
  * FastDFS分布式文件系统操作客户端.
  */
 public class FastDFSClient {
 
-    //private static final String CONF_FILENAME = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "fdfs_client.conf";
+    //	private static final String CONF_FILENAME = Thread.currentThread().getContextClassLoader().getResource("").getPath() + "fdfs_client.conf";
     private static final String CONF_FILENAME = "fdfs_client.conf";
-
     private static StorageClient storageClient = null;
 
 
@@ -33,11 +41,8 @@ public class FastDFSClient {
     }
 
     /**
-     *
-     * @param inputStream
-     *    上传的文件输入流
-     * @param fileName
-     *    上传的文件原始名
+     * @param inputStream 上传的文件输入流
+     * @param fileName    上传的文件原始名
      * @return
      */
     public static String[] uploadFile(InputStream inputStream, String fileName) {
@@ -47,7 +52,7 @@ public class FastDFSClient {
             // 第一组元数据，文件的原始名称
             meta_list[0] = new NameValuePair("file name", fileName);
             // 第二组元数据
-            meta_list[1] = new NameValuePair("file length", inputStream.available()+"");
+            meta_list[1] = new NameValuePair("file length", inputStream.available() + "");
             // 准备字节数组
             byte[] file_buff = null;
             if (inputStream != null) {
@@ -68,11 +73,8 @@ public class FastDFSClient {
     }
 
     /**
-     *
-     * @param file
-     *            文件
-     * @param fileName
-     *            文件名
+     * @param file     文件
+     * @param fileName 文件名
      * @return 返回Null则为失败
      */
     public static String[] uploadFile(File file, String fileName) {
@@ -91,8 +93,8 @@ public class FastDFSClient {
             return fileids;
         } catch (Exception ex) {
             return null;
-        }finally{
-            if (fis != null){
+        } finally {
+            if (fis != null) {
                 try {
                     fis.close();
                 } catch (IOException e) {
@@ -105,10 +107,8 @@ public class FastDFSClient {
     /**
      * 根据组名和远程文件名来删除一个文件
      *
-     * @param groupName
-     *            例如 "group1" 如果不指定该值，默认为group1
-     * @param remoteFileName
-     *            例如"M00/00/00/wKgxgk5HbLvfP86RAAAAChd9X1Y736.jpg"
+     * @param groupName      例如 "group1" 如果不指定该值，默认为group1
+     * @param remoteFileName 例如"M00/00/00/wKgxgk5HbLvfP86RAAAAChd9X1Y736.jpg"
      * @return 0为成功，非0为失败，具体为错误代码
      */
     public static int deleteFile(String groupName, String remoteFileName) {
@@ -123,14 +123,10 @@ public class FastDFSClient {
     /**
      * 修改一个已经存在的文件
      *
-     * @param oldGroupName
-     *            旧的组名
-     * @param oldFileName
-     *            旧的文件名
-     * @param file
-     *            新文件
-     * @param fileName
-     *            新文件名
+     * @param oldGroupName 旧的组名
+     * @param oldFileName  旧的文件名
+     * @param file         新文件
+     * @param fileName     新文件名
      * @return 返回空则为失败
      */
     public static String[] modifyFile(String oldGroupName, String oldFileName, File file, String fileName) {
@@ -155,7 +151,7 @@ public class FastDFSClient {
     /**
      * 文件下载
      *
-     * @param groupName 卷名
+     * @param groupName      卷名
      * @param remoteFileName 文件名
      * @return 返回一个流
      */
@@ -169,11 +165,11 @@ public class FastDFSClient {
         }
     }
 
-    public static NameValuePair[] getMetaDate(String groupName, String remoteFileName){
-        try{
+    public static NameValuePair[] getMetaDate(String groupName, String remoteFileName) {
+        try {
             NameValuePair[] nvp = storageClient.get_metadata(groupName, remoteFileName);
             return nvp;
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
             return null;
         }

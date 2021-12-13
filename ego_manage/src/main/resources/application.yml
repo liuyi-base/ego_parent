@@ -13,4 +13,4 @@ spring:
       prefix: /WEB-INF/jsp/
       suffix: .jsp
   profiles:
-    active: commons
+    active: commons, rabbitmq

@@ -2,6 +2,7 @@ package com.ego.dubbo.service.impl;
 
 import com.ego.commons.exception.DaoException;
 import com.ego.dubbo.service.TbContentDubboService;
+import com.ego.mapper.TbContentCategoryMapper;
 import com.ego.mapper.TbContentMapper;
 import com.ego.pojo.TbContent;
 import com.ego.pojo.TbContentExample;
@@ -59,5 +60,13 @@ public class TbContentDubboServiceImpl implements TbContentDubboService {
             return 1;
         }
         throw new DaoException("删除失败");
+    }
+
+    @Override
+    public List<TbContent> selectAllByCategoryid(Long categoryId) {
+        TbContentExample example = new TbContentExample();
+        example.createCriteria().andCategoryIdEqualTo(categoryId);
+        List<TbContent> tbContentList = tbContentMapper.selectByExample(example);
+        return tbContentList;
     }
 }

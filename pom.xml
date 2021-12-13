@@ -18,6 +18,8 @@
         <module>ego_portal</module>
         <module>ego_item</module>
         <module>ego_redis</module>
+        <module>ego_rabbitmq_sender</module>
+        <module>ego_rabbitmq_receive</module>
     </modules>
 
     <!-- Spring Boot 的父项目，声明所有 Spring Boot 相关版本 -->
